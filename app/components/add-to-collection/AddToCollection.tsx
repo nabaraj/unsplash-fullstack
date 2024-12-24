@@ -21,11 +21,9 @@ export const AddToCollection: React.FC<AddToCollectionProps> = ({
   const [loading, setLoading] = useState(false);
   const filterCollectionsWithImage = useCallback(
     (collections: CollectionResultType[]) => {
-      console.log({ collections });
-
       return collections.filter((collection) => !collection.haveCurrentImage);
     },
-    [imageId]
+    []
   );
 
   const getCollections = useCallback(async () => {

@@ -1,40 +1,40 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { baseURL } from "./constants";
-import { CollectionType, CurrentUserCollection } from "@/types";
+import { CollectionType } from "@/types";
 import { getUserDetails } from "./utils";
 
 type ResponseData = {
   collections: CollectionType[] | null;
 };
 
-const isCurrentImageAdded = async (
-  imageId: string,
-  collection: CurrentUserCollection
-): Promise<CurrentUserCollection> => {
-  console.log({ collection, imageId });
-  collection.haveCurrentImage = false;
+// const isCurrentImageAdded = async (
+//   imageId: string,
+//   collection: CurrentUserCollection
+// ): Promise<CurrentUserCollection> => {
+//   console.log({ collection, imageId });
+//   collection.haveCurrentImage = false;
 
-  try {
-    const response = await fetch(
-      `${collection.links.photos}?client_id=${process.env.UNSPLASH_ACCESS_KEY}`
-    );
-    const photos = await response.json();
+//   try {
+//     const response = await fetch(
+//       `${collection.links.photos}?client_id=${process.env.UNSPLASH_ACCESS_KEY}`
+//     );
+//     const photos = await response.json();
 
-    // Check if the image exists in the collection
-    photos.forEach(({ id }: { id: string }) => {
-      if (id === imageId) {
-        collection.haveCurrentImage = true;
-      }
-    });
-  } catch (error) {
-    console.error(
-      `Error fetching photos for collection ${collection.id}:`,
-      error
-    );
-  }
+//     // Check if the image exists in the collection
+//     photos.forEach(({ id }: { id: string }) => {
+//       if (id === imageId) {
+//         collection.haveCurrentImage = true;
+//       }
+//     });
+//   } catch (error) {
+//     console.error(
+//       `Error fetching photos for collection ${collection.id}:`,
+//       error
+//     );
+//   }
 
-  return collection;
-};
+//   return collection;
+// };
 
 export function processValue(value: string | string[] | undefined): string {
   if (typeof value === "string") {
