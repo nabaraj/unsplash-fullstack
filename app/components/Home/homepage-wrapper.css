@@ -1,0 +1,7 @@
+.bg-homepage {
+  background: url("./../../../public/images/hero-image.png") 50% 50% no-repeat;
+}
+.resultFound {
+  background: url("./../../../public/images/gradiend-bg.svg") 0 50% no-repeat;
+  background-size: cover;
+}
