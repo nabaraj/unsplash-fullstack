@@ -4,7 +4,7 @@ import {
   UrlsType
 } from "./collection-type";
 
-export interface GenericUser<T = Record<string, unknown>> {
+export interface GenericUser {
   id: string;
   updated_at: string;
   username: string;
@@ -17,7 +17,7 @@ export interface GenericUser<T = Record<string, unknown>> {
   location?: string;
   links: Record<string, string>;
   profile_image: Record<"small" | "medium" | "large", string>;
-  social: T;
+  social: string;
   total_collections: number;
   total_likes: number;
   total_photos: number;
@@ -89,7 +89,7 @@ export interface GenericImage {
   related_collections: CollectionType;
 }
 
-export interface GenericResponse<T = Record<string, unknown>> {
+export interface GenericResponse {
   images: {
     total: number;
     total_pages: number;

@@ -3,9 +3,6 @@ import { MasonryGrid } from "@/app/components";
 import { Title } from "@/app/components/title/Title";
 import { GenericImage } from "@/types";
 import React, { useEffect, useState } from "react";
-interface CollectionImagesProps {
-  // Add your props here
-}
 
 const CollectionImages: React.FC<{
   params: Promise<{ id: string; title: string }>;

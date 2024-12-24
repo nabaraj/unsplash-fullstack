@@ -3,15 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-interface MasonryProps<T> {
+interface MasonryProps {
   images: GenericImage[]; // Use the generic type
   columns?: number; // Number of columns in the masonry grid
 }
 
-export const MasonryGrid = <T extends Record<string, unknown>>({
+export const MasonryGrid: React.FC<MasonryProps> = ({
   images,
   columns = 4
-}: MasonryProps<T>) => {
+}: MasonryProps) => {
   // Create columns dynamically
   const columnArray: GenericImage[][] = Array.from(
     { length: columns },
