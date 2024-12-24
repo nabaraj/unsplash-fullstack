@@ -1,9 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { baseURL } from "./constants";
 import { processValue } from "./utils";
+import { GenericImage } from "@/types";
 
 type ResponseData = {
-  images: any;
+  images: GenericImage[];
 };
 
 export default async function handler(
@@ -15,7 +16,7 @@ export default async function handler(
   // Sanitize and validate the input query
   const processedKeywards = processValue(keywards);
   if (!processedKeywards) {
-    res.status(400).json({ images: null });
+    res.status(400).json({ images: [] });
     console.error("Query is empty or invalid");
     return;
   }
@@ -36,6 +37,6 @@ export default async function handler(
     res.status(200).send({ images: data });
   } catch (error) {
     console.error("Error fetching Unsplash API:", error);
-    res.status(500).json({ images: null });
+    res.status(500).json({ images: [] });
   }
 }

@@ -28,8 +28,12 @@ function useApi<T>(): UseApiResponse<T> {
 
       const result: T = await response.json();
       setData(result);
-    } catch (err: any) {
-      setError(err.message || "An unknown error occurred.");
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred");
+      }
     } finally {
       setLoading(false);
     }
