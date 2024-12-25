@@ -25,11 +25,11 @@ export default function RootLayout({
               className='flex items-center space-x-3 rtl:space-x-reverse'
             >
               <Image
-                src='./images/Logo.svg'
+                src='/images/Logo.svg'
                 className='h-8'
                 alt='Unsplash Logo'
-                width='118'
-                height='24'
+                width={118}
+                height={24}
               />
             </Link>
 
