@@ -54,6 +54,9 @@ export default async function handler(
     }
 
     const data = await result.json();
+
+    // Disable caching in the response
+    res.setHeader("Cache-Control", "no-store"); // Prevent caching
     res.status(200).json({ images: data });
   } catch (error) {
     console.error("Error in handler:", error);

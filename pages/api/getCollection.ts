@@ -5,36 +5,8 @@ import { getUserDetails } from "./utils";
 
 type ResponseData = {
   collections: CollectionType[] | null;
+  error?: string;
 };
-
-// const isCurrentImageAdded = async (
-//   imageId: string,
-//   collection: CurrentUserCollection
-// ): Promise<CurrentUserCollection> => {
-//   console.log({ collection, imageId });
-//   collection.haveCurrentImage = false;
-
-//   try {
-//     const response = await fetch(
-//       `${collection.links.photos}?client_id=${process.env.UNSPLASH_ACCESS_KEY}`
-//     );
-//     const photos = await response.json();
-
-//     // Check if the image exists in the collection
-//     photos.forEach(({ id }: { id: string }) => {
-//       if (id === imageId) {
-//         collection.haveCurrentImage = true;
-//       }
-//     });
-//   } catch (error) {
-//     console.error(
-//       `Error fetching photos for collection ${collection.id}:`,
-//       error
-//     );
-//   }
-
-//   return collection;
-// };
 
 export function processValue(value: string | string[] | undefined): string {
   if (typeof value === "string") {
@@ -50,9 +22,19 @@ export default async function handler(
   res: NextApiResponse<ResponseData>
 ) {
   try {
-    // Fetch profile details to get the username
+    // Validate API key
+    if (!process.env.UNSPLASH_ACCESS_KEY) {
+      throw new Error(
+        "Unsplash Access Key is missing from environment variables."
+      );
+    }
 
+    // Fetch profile details to get the username
     const { username } = await getUserDetails();
+
+    if (!username) {
+      throw new Error("Username not found in user details.");
+    }
 
     // Use the username to fetch collections
     const url = `${baseURL}/users/${username}/collections?client_id=${process.env.UNSPLASH_ACCESS_KEY}`;
@@ -64,11 +46,20 @@ export default async function handler(
 
     const collections = await collectionsResponse.json();
 
-    // Process collections to check if the image is in each collection
+    if (!Array.isArray(collections)) {
+      throw new Error("Unexpected response format from Unsplash API.");
+    }
 
-    res.status(200).send({ collections });
+    // Disable caching in the response
+    res.setHeader("Cache-Control", "no-store");
+
+    // Return the collections
+    res.status(200).json({ collections });
   } catch (error) {
     console.error("Error fetching Unsplash API:", error);
-    res.status(500).json({ collections: null });
+    res.status(500).json({
+      collections: null,
+      error: (error as Error).message || "Internal Server Error"
+    });
   }
 }

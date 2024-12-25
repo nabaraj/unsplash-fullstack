@@ -27,7 +27,7 @@ export default function RootLayout({
               <Image
                 src='./images/Logo.svg'
                 className='h-8'
-                alt='Flowbite Logo'
+                alt='Unsplash Logo'
                 width='118'
                 height='24'
               />
