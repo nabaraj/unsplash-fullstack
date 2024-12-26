@@ -1,8 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Multi-Page Website with React.js, TypeScript, Tailwind CSS, and Next.js
+
+This project is a multi-page website that allows users to interact with Unsplash images and collections, featuring seamless user experience and robust functionality.
+
+## Features
+
+### **Homepage**
+
+- **Image Search**: Search for images from Unsplash using keywords.
+- **Search Results**: Displays a list of images upon pressing `Enter`, provided at least one keyword is entered.
+- **Image Selection**: Navigate to a dedicated Image page by selecting an image.
+
+### **Image Page**
+
+- **Detailed Information**: View the image's author, published date, and associated collections.
+- **Add to Collection**:
+  - Add an image to a collection using the `Add to Collection` button.
+  - Search for collections and add images, filtering out collections the image is already part of.
+- **Remove from Collection**: Remove an image from its collections.
+- **Download Image**: Download the selected image directly.
+
+### **Collections Page**
+
+- **Browse Collections**: View and select from existing collections.
+- **Collection Details**: Display all images within a selected collection.
+
+---
+
+## Technical Implementation
+
+- **Frameworks and Libraries**: Built with React.js, TypeScript, Tailwind CSS, and Next.js.
+- **API Integration**:
+  - Utilized Next.js API routes for backend calls.
+  - Ensured secure handling of API authentication logic.
+- **Styling**: Used Tailwind CSS utility classes extensively to reduce reliance on custom CSS.
+- **Code Quality**: Followed DRY principles, maintaining clean, readable, and maintainable code.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to set up and run the project:
+
+### **Install Dependencies**
+
+```bash
+npm install
+```
+
+### **Run Development Server**
 
 ```bash
 npm run dev
@@ -14,23 +59,39 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000) in your browser to access the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **Build for Production**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+### **Run Production Build**
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+Deploy the solution to a platform like Vercel. Provide the repository URL and the live demo URL after deployment.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To learn more about deploying Next.js applications:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Deployment Documentation](https://nextjs.org/docs/app/building-your-application/deploying)
+
+---
+
+## Recommended Setup
+
+Use [VSCode](https://code.visualstudio.com/) with the [Volar Extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar) for the best development experience. Ensure Vetur is disabled.
+
+---
+
+## Learn More About Next.js
+
+- [Next.js Documentation](https://nextjs.org/docs) - Explore Next.js features and APIs.
+- [Learn Next.js](https://nextjs.org/learn) - Hands-on Next.js tutorial.
