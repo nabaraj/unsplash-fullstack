@@ -1,8 +1,10 @@
 # Multi-Page Website with React.js, TypeScript, Tailwind CSS, and Next.js
 
+![Screenshot](./screenshot.png)
+
 This project is a multi-page website that allows users to interact with Unsplash images and collections, featuring seamless user experience and robust functionality.
 
-[Webpage](unsplash-fullstack-a6rv.vercel.app/)
+[Webpage](unsplash-fullstack-a6rv.vercel.app/),
 [Challenge Link](https://devchallenges.io/challenge/unsplash-collection)
 
 ## Features
